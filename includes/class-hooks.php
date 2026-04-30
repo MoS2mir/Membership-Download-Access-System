@@ -276,9 +276,10 @@ class Membership_System_Hooks {
             .ms-highlight { color: #e74c3c; font-weight: bold; }
             .status-active-text { color: #2ecc71; font-weight: bold; }
             
-            .ms-history-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; border: 1px solid #eee; border-radius: 10px; overflow: hidden; }
-            .ms-history-table th { background: #f8f9fa; padding: 15px; text-align: left; }
-            .ms-history-table td { padding: 15px; border-top: 1px solid #eee; }
+            .ms-history-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; border: 1px solid #eee; border-radius: 10px; overflow: hidden; background: #fff; }
+            .ms-history-table th { background: #f8f9fa; padding: 18px 20px !important; text-align: left; color: #7f8c8d; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+            .ms-history-table td { padding: 18px 20px !important; border-top: 1px solid #eee; vertical-align: middle; }
+            .ms-history-table tr:hover td { background-color: #fcfcfc; }
             
             .ms-status-badge { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; display: inline-block; }
             .ms-status-badge.status-active { background: #e8f8f0; color: #2ecc71; }
@@ -319,9 +320,10 @@ class Membership_System_Hooks {
         </div>
 
         <style>
-            .ms-history-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; border: 1px solid #eee; border-radius: 10px; overflow: hidden; }
-            .ms-history-table th { background: #f8f9fa; padding: 15px; text-align: left; }
-            .ms-history-table td { padding: 15px; border-top: 1px solid #eee; }
+            .ms-history-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; border: 1px solid #eee; border-radius: 10px; overflow: hidden; background: #fff; }
+            .ms-history-table th { background: #f8f9fa; padding: 18px 20px !important; text-align: left; color: #7f8c8d; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+            .ms-history-table td { padding: 18px 20px !important; border-top: 1px solid #eee; vertical-align: middle; }
+            .ms-history-table tr:hover td { background-color: #fcfcfc; }
         </style>
         <?php
     }
@@ -377,9 +379,10 @@ class Membership_System_Hooks {
             <?php endif; ?>
         </div>
         <style>
-            .ms-followed-products-section .ms-history-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; border: 1px solid #eee; border-radius: 10px; overflow: hidden; }
-            .ms-followed-products-section .ms-history-table th { background: #f8f9fa; padding: 15px; text-align: left; }
-            .ms-followed-products-section .ms-history-table td { padding: 15px; border-top: 1px solid #eee; }
+            .ms-followed-products-section .ms-history-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; border: 1px solid #eee; border-radius: 10px; overflow: hidden; background: #fff; }
+            .ms-followed-products-section .ms-history-table th { background: #f8f9fa; padding: 18px 20px !important; text-align: left; color: #7f8c8d; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+            .ms-followed-products-section .ms-history-table td { padding: 18px 20px !important; border-top: 1px solid #eee; vertical-align: middle; }
+            .ms-followed-products-section .ms-history-table tr:hover td { background-color: #fcfcfc; }
             .ms-followed-products-section .ms-highlight { font-weight: bold; color: #e74c3c; }
         </style>
         <?php
