@@ -26,6 +26,28 @@ class Membership_Follow_Button_Widget extends Widget_Base {
 
     protected function register_controls() {
         $this->start_controls_section(
+            'section_content',
+            [
+                'label' => __( 'Content', 'membership-system' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'show_version',
+            [
+                'label' => __( 'Show Current Version', 'membership-system' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'membership-system' ),
+                'label_off' => __( 'Hide', 'membership-system' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
             'section_style',
             [
                 'label' => __( 'Style', 'membership-system' ),
@@ -82,10 +104,12 @@ class Membership_Follow_Button_Widget extends Widget_Base {
             return;
         }
 
+        $settings = $this->get_settings_for_display();
+        
         echo '<div class="ms-follow-widget-wrapper">';
 
         $version = get_post_meta( $product->get_id(), 'ms_product_version', true );
-        if ( $version ) {
+        if ( $version && 'yes' === $settings['show_version'] ) {
             echo '<p class="ms-version-display"><strong>' . __( 'Current Version:', 'membership-system' ) . '</strong> ' . esc_html( $version ) . '</p>';
         }
 
