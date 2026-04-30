@@ -86,6 +86,11 @@ class Membership_Follow_Button_Widget extends Widget_Base {
 
         echo '<div class="ms-follow-widget-wrapper">';
 
+        $version = get_post_meta( $product->get_id(), 'ms_product_version', true );
+        if ( $version ) {
+            echo '<p class="ms-version-display"><strong>' . __( 'Current Version:', 'membership-system' ) . '</strong> ' . esc_html( $version ) . '</p>';
+        }
+
         if ( ! is_user_logged_in() ) {
             echo '<p><a href="' . esc_url( wc_get_page_permalink( 'myaccount' ) ) . '" class="button">' . __( 'Follow for Update', 'membership-system' ) . '</a></p>';
             echo '</div>';
@@ -102,11 +107,6 @@ class Membership_Follow_Button_Widget extends Widget_Base {
         $button_text = $is_following ? __( 'Following for Updates', 'membership-system' ) : __( 'Follow for Update', 'membership-system' );
         $button_class = $is_following ? 'ms-follow-button following' : 'ms-follow-button';
         
-        $version = get_post_meta( $product->get_id(), 'ms_product_version', true );
-        if ( $version ) {
-            echo '<p class="ms-version-display"><strong>' . __( 'Current Version:', 'membership-system' ) . '</strong> ' . esc_html( $version ) . '</p>';
-        }
-
         echo '<button type="button" class="' . esc_attr( $button_class ) . '" data-product_id="' . esc_attr( $product->get_id() ) . '">' . esc_html( $button_text ) . '</button>';
         echo '<div class="ms-follow-message" style="display:none; margin-top: 10px;"></div>';
         
