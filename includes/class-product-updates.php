@@ -303,6 +303,20 @@ class Membership_Product_Updates {
         
         update_post_meta( $product_id, '_ms_update_requests', $requests );
         
+        // Notify admin about the new request
+        $admin_email = 'support@spodly.com';
+        $product = wc_get_product( $product_id );
+        $product_name = $product ? $product->get_name() : 'Unknown Product (ID: ' . $product_id . ')';
+        
+        $subject = sprintf( __( 'New Update Request: %s', 'membership-system' ), $product_name );
+        $message = "A user has requested an update for a product.\n\n";
+        $message .= "Product Name: " . $product_name . "\n";
+        $message .= "User Email: " . $email . "\n";
+        $message .= "Requested Version: " . ( $version ? $version : 'Not specified' ) . "\n";
+        $message .= "Date: " . date( 'Y-m-d H:i:s' ) . "\n";
+        
+        wp_mail( $admin_email, $subject, $message );
+        
         wp_send_json_success( __( 'Your request has been submitted successfully!', 'membership-system' ) );
     }
 
