@@ -64,8 +64,6 @@ class Membership_Follow_Button_Widget extends Widget_Base {
 
     protected function render() {
         global $product;
-
-        // If not on a single product page, try to get product from query
         if ( ! $product ) {
             $product_id = get_the_ID();
             if ( $product_id && 'product' === get_post_type( $product_id ) ) {

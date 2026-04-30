@@ -26,6 +26,9 @@ class Membership_Product_Updates {
         // Track Version Changes for Email Notification
         add_action( 'updated_post_meta', [ $this, 'check_version_update' ], 10, 4 );
         add_action( 'added_post_meta', [ $this, 'check_version_update' ], 10, 4 );
+
+        // Shortcode to display product version
+        add_shortcode( 'ms_product_version', [ $this, 'render_product_version_shortcode' ] );
     }
 
     public function add_product_version_field() {
@@ -342,6 +345,24 @@ class Membership_Product_Updates {
         }
         
         update_post_meta( $post_id, '_ms_update_requests', $remaining_requests );
+    }
+
+    public function render_product_version_shortcode( $atts ) {
+        $atts = shortcode_atts( [
+            'id' => get_the_ID(),
+        ], $atts, 'ms_product_version' );
+
+        $product_id = intval( $atts['id'] );
+        if ( ! $product_id || 'product' !== get_post_type( $product_id ) ) {
+            return '';
+        }
+
+        $version = get_post_meta( $product_id, 'ms_product_version', true );
+        if ( ! $version ) {
+            return '';
+        }
+
+        return '<p class="ms-version-display"><strong>' . __( 'Current Version:', 'membership-system' ) . '</strong> ' . esc_html( $version ) . '</p>';
     }
 }
 new Membership_Product_Updates();
